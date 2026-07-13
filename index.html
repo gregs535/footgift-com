@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>footgift — Curated Foot Appreciation</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background: #0d0d0d;
+            color: #e8d5c4;
+            line-height: 1.6;
+        }
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, #1a0a0a 0%, #0d0d0d 50%, #1a0a2e 100%);
+        }
+        .hero h1 {
+            font-size: 4.5rem;
+            font-weight: 300;
+            letter-spacing: 0.15em;
+            color: #d4a574;
+            margin-bottom: 0.5rem;
+        }
+        .hero .tagline {
+            font-size: 1.4rem;
+            color: #c9a882;
+            font-style: italic;
+            margin-bottom: 2rem;
+            letter-spacing: 0.05em;
+        }
+        .hero .subtitle {
+            font-size: 1.1rem;
+            color: #a0866c;
+            max-width: 600px;
+            margin-bottom: 3rem;
+        }
+        .cta {
+            background: transparent;
+            border: 1px solid #d4a574;
+            color: #d4a574;
+            padding: 1rem 3rem;
+            font-size: 1.1rem;
+            font-family: 'Georgia', serif;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .cta:hover {
+            background: #d4a574;
+            color: #0d0d0d;
+        }
+        .gallery {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .gallery h2 {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 300;
+            color: #d4a574;
+            letter-spacing: 0.1em;
+            margin-bottom: 3rem;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        .grid-item {
+            position: relative;
+            border-radius: 4px;
+            overflow: hidden;
+            background: #1a1a1a;
+            aspect-ratio: 1;
+        }
+        .grid-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        .grid-item:hover img {
+            transform: scale(1.05);
+        }
+        .grid-item .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1rem;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .grid-item:hover .overlay {
+            opacity: 1;
+        }
+        .grid-item .model-name {
+            color: #d4a574;
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+        }
+        .newsletter {
+            padding: 4rem 2rem;
+            text-align: center;
+            background: #150f0f;
+        }
+        .newsletter h2 {
+            font-size: 2rem;
+            font-weight: 300;
+            color: #d4a574;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+        .newsletter p {
+            color: #a0866c;
+            margin-bottom: 2rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .newsletter form {
+            display: flex;
+            gap: 0.5rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .newsletter input {
+            flex: 1;
+            padding: 0.8rem 1.2rem;
+            background: #1a1a1a;
+            border: 1px solid #3a2a2a;
+            color: #e8d5c4;
+            font-family: 'Georgia', serif;
+            font-size: 1rem;
+        }
+        .newsletter button {
+            background: #d4a574;
+            border: none;
+            color: #0d0d0d;
+            padding: 0.8rem 2rem;
+            font-family: 'Georgia', serif;
+            font-size: 1rem;
+            letter-spacing: 0.05em;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+        .products {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .products h2 {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 300;
+            color: #d4a574;
+            letter-spacing: 0.1em;
+            margin-bottom: 3rem;
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        .product-card {
+            background: #1a1a1a;
+            padding: 2rem;
+            text-align: center;
+            border: 1px solid #2a1a1a;
+            border-radius: 4px;
+            transition: border-color 0.3s;
+        }
+        .product-card:hover {
+            border-color: #d4a574;
+        }
+        .product-card .icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .product-card h3 {
+            color: #d4a574;
+            font-size: 1.2rem;
+            font-weight: 300;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+        .product-card p {
+            color: #a0866c;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .product-card .price {
+            color: #e8d5c4;
+            font-size: 1.3rem;
+        }
+        .social {
+            padding: 3rem 2rem;
+            text-align: center;
+            background: #0d0d0d;
+        }
+        .social h2 {
+            font-size: 1.5rem;
+            font-weight: 300;
+            color: #d4a574;
+            letter-spacing: 0.1em;
+            margin-bottom: 1.5rem;
+        }
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        .social-links a {
+            color: #a0866c;
+            text-decoration: none;
+            font-size: 1rem;
+            letter-spacing: 0.05em;
+            transition: color 0.3s;
+        }
+        .social-links a:hover {
+            color: #d4a574;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #5a4a3a;
+            font-size: 0.8rem;
+        }
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
+            .newsletter form { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <h1>footgift</h1>
+        <p class="tagline">Curated Foot Appreciation</p>
+        <p class="subtitle">A journey through the artistry of feet — AI models, exclusive content, custom foot lingerie, and handcrafted foot art from Studio 535.</p>
+        <a href="#newsletter" class="cta">Join the Journey</a>
+    </section>
+
+    <section class="gallery">
+        <h2>Our Models</h2>
+        <div class="grid" id="gallery-grid">
+            <!-- Populated by JS -->
+        </div>
+    </section>
+
+    <section class="products">
+        <h2>The Collection</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="icon">👣</div>
+                <h3>AI Model Subscription</h3>
+                <p>Daily exclusive images from our AI models. New poses, styles, and settings every day.</p>
+                <div class="price">$9/month</div>
+            </div>
+            <div class="product-card">
+                <div class="icon">💎</div>
+                <h3>Custom AI Foot Model</h3>
+                <p>Describe your dream foot model. We generate a personalized set just for you.</p>
+                <div class="price">$29 one-time</div>
+            </div>
+            <div class="product-card">
+                <div class="icon">🦶</div>
+                <h3>Foot Lingerie</h3>
+                <p>Digital designs + physical laser-cut foot jewelry. Leather, latex, acrylic — wearable art.</p>
+                <div class="price">From $12</div>
+            </div>
+            <div class="product-card">
+                <div class="icon">🪔</div>
+                <h3>Foot Mold Lamps</h3>
+                <p>Custom lamps sculpted from foot molds. Laser-cut layered acrylic. Studio 535 original.</p>
+                <div class="price">From $149</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="newsletter" id="newsletter">
+        <h2>Daily Foot Gift</h2>
+        <p>One beautiful image. One thoughtful insight. Delivered to your inbox every morning.</p>
+        <form id="signup-form">
+            <input type="email" placeholder="Your email address" required>
+            <button type="submit">Subscribe</button>
+        </form>
+    </section>
+
+    <section class="social">
+        <h2>Follow the Journey</h2>
+        <div class="social-links">
+            <a href="https://tiktok.com/@footgift">TikTok</a>
+            <a href="https://instagram.com/footgift">Instagram</a>
+            <a href="https://x.com/footgift">X / Twitter</a>
+            <a href="https://pinterest.com/footgift">Pinterest</a>
+            <a href="https://reddit.com/r/footgift">Reddit</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>footgift.com &copy; 2026 — Studio 535 — Las Vegas</p>
+    </footer>
+
+    <script>
+        // Gallery placeholder images
+        const galleryImages = [
+            { src: 'https://v3b.fal.media/files/b/0aa2069d/IjlfwrR4LY43Ss17PlSq2_RqB9vyPS.png', name: 'Luna — Silk & Elegance' },
+            { src: 'https://v3b.fal.media/files/b/0aa2069d/9AP5tevIwFzHm_wJknDCC_JrDkDEmu.png', name: 'Soleil — Beach & Gold' },
+            { src: 'https://v3b.fal.media/files/b/0aa2069e/vXGJDfBqOTiKaTWedBprH_oIjHIMtV.png', name: 'Noir — Marble & Drama' },
+            { src: 'https://v3b.fal.media/files/b/0aa206a3/Yp4YqtWORVjnGShh3JWwW_ZJYVmvFJ.png', name: 'Ivy — Poolside Luxe' },
+            { src: 'https://v3b.fal.media/files/b/0aa206a4/n14-udjqXR-aaZHBH807I_7UZ6MZud.png', name: 'Pearl — Water & Zen' },
+            { src: 'https://v3b.fal.media/files/b/0aa206a4/qCjF0ak0kAC5j6Jkj19DK_plbuhppV.png', name: 'Ruby — Rug & Opulence' },
+        ];
+
+        const grid = document.getElementById('gallery-grid');
+        galleryImages.forEach(img => {
+            const item = document.createElement('div');
+            item.className = 'grid-item';
+            item.innerHTML = `
+                <img src="${img.src}" alt="${img.name}" loading="lazy">
+                <div class="overlay"><span class="model-name">${img.name}</span></div>
+            `;
+            grid.appendChild(item);
+        });
+
+        document.getElementById('signup-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = e.target.querySelector('input').value;
+            alert('Welcome to the journey, foot lover. Your first Daily Foot Gift arrives tomorrow. ✨');
+            e.target.reset();
+        });
+    </script>
+</body>
+</html>
