@@ -3,347 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>footgift — Curated Foot Appreciation</title>
+    <title>footgift — Curated Foot Care & Beauty</title>
+    <meta name="description" content="Premium foot care, beauty, and wellness products. Skincare, jewelry, foot lingerie, and more.">
+    <meta property="og:title" content="footgift — Curated Foot Care & Beauty">
+    <meta property="og:description" content="Premium foot care products, jewelry, and wellness. For the feet that carry you.">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://footgift.com">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Georgia', 'Times New Roman', serif;
-            background: #0d0d0d;
-            color: #e8d5c4;
-            line-height: 1.6;
-        }
-        .hero {
-            min-height: 90vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 2rem;
-            background: linear-gradient(135deg, #1a0a0a 0%, #0d0d0d 50%, #1a0a2e 100%);
-        }
-        .hero h1 {
-            font-size: 4.5rem;
-            font-weight: 300;
-            letter-spacing: 0.15em;
-            color: #d4a574;
-            margin-bottom: 0.5rem;
-        }
-        .hero .tagline {
-            font-size: 1.4rem;
-            color: #c9a882;
-            font-style: italic;
-            margin-bottom: 2rem;
-            letter-spacing: 0.05em;
-        }
-        .hero .subtitle {
-            font-size: 1.1rem;
-            color: #a0866c;
-            max-width: 600px;
-            margin-bottom: 3rem;
-        }
-        .cta {
-            background: transparent;
-            border: 1px solid #d4a574;
-            color: #d4a574;
-            padding: 1rem 3rem;
-            font-size: 1.1rem;
-            font-family: 'Georgia', serif;
-            letter-spacing: 0.1em;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-transform: uppercase;
-            text-decoration: none;
-            display: inline-block;
-        }
-        .cta:hover {
-            background: #d4a574;
-            color: #0d0d0d;
-        }
-        .gallery {
-            padding: 4rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        .gallery h2 {
-            text-align: center;
-            font-size: 2rem;
-            font-weight: 300;
-            color: #d4a574;
-            letter-spacing: 0.1em;
-            margin-bottom: 3rem;
-        }
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1.5rem;
-        }
-        .grid-item {
-            position: relative;
-            border-radius: 4px;
-            overflow: hidden;
-            background: #1a1a1a;
-            aspect-ratio: 1;
-        }
-        .grid-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
-        .grid-item:hover img {
-            transform: scale(1.05);
-        }
-        .grid-item .overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 1rem;
-            background: linear-gradient(transparent, rgba(0,0,0,0.8));
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        .grid-item:hover .overlay {
-            opacity: 1;
-        }
-        .grid-item .model-name {
-            color: #d4a574;
-            font-size: 0.9rem;
-            letter-spacing: 0.05em;
-        }
-        .newsletter {
-            padding: 4rem 2rem;
-            text-align: center;
-            background: #150f0f;
-        }
-        .newsletter h2 {
-            font-size: 2rem;
-            font-weight: 300;
-            color: #d4a574;
-            letter-spacing: 0.1em;
-            margin-bottom: 1rem;
-        }
-        .newsletter p {
-            color: #a0866c;
-            margin-bottom: 2rem;
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .newsletter form {
-            display: flex;
-            gap: 0.5rem;
-            max-width: 500px;
-            margin: 0 auto;
-        }
-        .newsletter input {
-            flex: 1;
-            padding: 0.8rem 1.2rem;
-            background: #1a1a1a;
-            border: 1px solid #3a2a2a;
-            color: #e8d5c4;
-            font-family: 'Georgia', serif;
-            font-size: 1rem;
-        }
-        .newsletter button {
-            background: #d4a574;
-            border: none;
-            color: #0d0d0d;
-            padding: 0.8rem 2rem;
-            font-family: 'Georgia', serif;
-            font-size: 1rem;
-            letter-spacing: 0.05em;
-            cursor: pointer;
-            text-transform: uppercase;
-        }
-        .products {
-            padding: 4rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        .products h2 {
-            text-align: center;
-            font-size: 2rem;
-            font-weight: 300;
-            color: #d4a574;
-            letter-spacing: 0.1em;
-            margin-bottom: 3rem;
-        }
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-        .product-card {
-            background: #1a1a1a;
-            padding: 2rem;
-            text-align: center;
-            border: 1px solid #2a1a1a;
-            border-radius: 4px;
-            transition: border-color 0.3s;
-        }
-        .product-card:hover {
-            border-color: #d4a574;
-        }
-        .product-card .icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-        .product-card h3 {
-            color: #d4a574;
-            font-size: 1.2rem;
-            font-weight: 300;
-            letter-spacing: 0.05em;
-            margin-bottom: 0.5rem;
-        }
-        .product-card p {
-            color: #a0866c;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-        .product-card .price {
-            color: #e8d5c4;
-            font-size: 1.3rem;
-        }
-        .social {
-            padding: 3rem 2rem;
-            text-align: center;
-            background: #0d0d0d;
-        }
-        .social h2 {
-            font-size: 1.5rem;
-            font-weight: 300;
-            color: #d4a574;
-            letter-spacing: 0.1em;
-            margin-bottom: 1.5rem;
-        }
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-        }
-        .social-links a {
-            color: #a0866c;
-            text-decoration: none;
-            font-size: 1rem;
-            letter-spacing: 0.05em;
-            transition: color 0.3s;
-        }
-        .social-links a:hover {
-            color: #d4a574;
-        }
-        footer {
-            text-align: center;
-            padding: 2rem;
-            color: #5a4a3a;
-            font-size: 0.8rem;
-        }
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            .grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
-            .newsletter form { flex-direction: column; }
-        }
+        :root{--ink:#f7f1e6;--muted:#b8a0b5;--warm:#c99870;--gold:#d4a574;--gold2:#e8c9a0;--bg:#0d0d0d;--card:#1a1412;--line:#3a2a22}
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Georgia','Times New Roman',serif;background:#0d0d0d;color:var(--ink);line-height:1.6}
+        .nav{display:flex;justify-content:space-between;align-items:center;padding:22px 6vw;position:absolute;width:100%;z-index:10}
+        .nav .brand{font-weight:700;font-size:1.1rem;letter-spacing:.06em;color:var(--gold2);text-decoration:none}
+        .nav-links{display:flex;gap:24px}
+        .nav-links a{color:var(--muted);text-decoration:none;font-size:.9rem;transition:color .2s}
+        .nav-links a:hover{color:var(--gold2)}
+        .community-link{border:1px solid var(--gold);border-radius:999px;padding:6px 16px;color:var(--gold)!important;font-size:.85rem}
+        .hero{min-height:90vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2rem;background:linear-gradient(135deg,#1a0a0a 0%,#0d0d0d 50%,#1a0a2e 100%)}
+        .hero h1{font-size:clamp(3rem,8vw,5rem);font-weight:300;letter-spacing:.15em;color:var(--gold);margin-bottom:.4rem}
+        .hero .tagline{font-size:1.3rem;color:var(--warm);font-style:italic;margin-bottom:2rem;letter-spacing:.05em}
+        .hero .subtitle{font-size:1.05rem;color:var(--muted);max-width:580px;margin-bottom:3rem;line-height:1.7}
+        .cta{background:transparent;border:1px solid var(--gold);color:var(--gold);padding:1rem 3rem;font-family:'Georgia',serif;font-size:1rem;letter-spacing:.1em;cursor:pointer;transition:all .3s;text-transform:uppercase;text-decoration:none;display:inline-block}
+        .cta:hover{background:var(--gold);color:#0d0d0d}
+        .cta.primary{background:var(--gold);color:#0d0d0d;border:none}
+        .cta.primary:hover{background:var(--gold2)}
+        section{padding:4rem 6vw;max-width:1200px;margin:0 auto}
+        section h2{text-align:center;font-size:1.8rem;font-weight:300;color:var(--gold);letter-spacing:.1em;margin-bottom:2.5rem}
+        .product-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem}
+        .product-card{background:var(--card);padding:2rem;text-align:center;border:1px solid #2a1a1a;border-radius:8px;transition:border-color .3s}
+        .product-card:hover{border-color:var(--gold)}
+        .product-card .icon{font-size:2.5rem;margin-bottom:.8rem}
+        .product-card h3{color:var(--gold);font-size:1.1rem;font-weight:400;letter-spacing:.05em;margin-bottom:.5rem}
+        .product-card p{color:var(--muted);font-size:.9rem;margin-bottom:1rem}
+        .product-card .price{color:var(--ink);font-size:1.2rem}
+        .blog-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem}
+        .blog-card{background:var(--card);border:1px solid var(--line);border-radius:8px;overflow:hidden;transition:border-color .3s}
+        .blog-card:hover{border-color:var(--gold)}
+        .blog-card .blog-img{height:180px;background:radial-gradient(circle at 50% 50%,#3a1e30,#1a0a1e);display:flex;align-items:center;justify-content:center;color:var(--gold2);font-size:2rem}
+        .blog-card .blog-body{padding:1.5rem}
+        .blog-card .blog-body .date{color:var(--muted);font-size:.8rem;margin-bottom:.5rem}
+        .blog-card .blog-body h3{color:var(--gold);font-size:1.1rem;font-weight:400;margin-bottom:.5rem}
+        .blog-card .blog-body p{color:var(--muted);font-size:.9rem;line-height:1.6}
+        .newsletter{text-align:center;background:#150f0f;padding:4rem 2rem}
+        .newsletter h2{font-size:1.8rem;font-weight:300;color:var(--gold);letter-spacing:.1em;margin-bottom:.8rem}
+        .newsletter p{color:var(--muted);margin-bottom:2rem;max-width:500px;margin-left:auto;margin-right:auto}
+        .newsletter form{display:flex;gap:.5rem;max-width:460px;margin:0 auto}
+        .newsletter input{flex:1;padding:.8rem 1.2rem;background:#1a1a1a;border:1px solid var(--line);color:var(--ink);font-family:'Georgia',serif;font-size:1rem;border-radius:4px}
+        .newsletter button{background:var(--gold);border:none;color:#0d0d0d;padding:.8rem 2rem;font-family:'Georgia',serif;font-size:1rem;letter-spacing:.05em;cursor:pointer;text-transform:uppercase;border-radius:4px;font-weight:700}
+        .community-banner{text-align:center;padding:3rem 2rem;background:radial-gradient(circle at 50% 0,#3a1e40,transparent 60%),#150f18;border-top:1px solid #2a1530;border-bottom:1px solid #2a1530}
+        .community-banner p{color:var(--muted);max-width:600px;margin:0 auto 1.5rem;font-size:1.05rem}
+        .social{text-align:center;padding:3rem 2rem;background:#0d0d0d}
+        .social h2{font-size:1.5rem;font-weight:300;color:var(--gold);letter-spacing:.1em;margin-bottom:1.5rem}
+        .social-links{display:flex;justify-content:center;gap:2rem;flex-wrap:wrap}
+        .social-links a{color:var(--muted);text-decoration:none;font-size:1rem;letter-spacing:.05em;transition:color .3s}
+        .social-links a:hover{color:var(--gold)}
+        footer{text-align:center;padding:2rem;color:#5a4a3a;font-size:.8rem}
+        @media(max-width:768px){.hero h1{font-size:2.5rem}.newsletter form{flex-direction:column}.nav-links{gap:12px}.community-link{display:none}}
     </style>
 </head>
 <body>
-    <section class="hero">
-        <h1>footgift</h1>
-        <p class="tagline">Curated Foot Appreciation</p>
-        <p class="subtitle">A journey through the artistry of feet — AI models, exclusive content, custom foot lingerie, and handcrafted foot art from Studio 535.</p>
-        <a href="#newsletter" class="cta">Join the Journey</a>
-    </section>
-
-    <section class="gallery">
-        <h2>Our Models</h2>
-        <div class="grid" id="gallery-grid">
-            <!-- Populated by JS -->
-        </div>
-    </section>
-
-    <section class="products">
-        <h2>The Collection</h2>
-        <div class="product-grid">
-            <div class="product-card">
-                <div class="icon">👣</div>
-                <h3>AI Model Subscription</h3>
-                <p>Daily exclusive images from our AI models. New poses, styles, and settings every day.</p>
-                <div class="price">$9/month</div>
-            </div>
-            <div class="product-card">
-                <div class="icon">💎</div>
-                <h3>Custom AI Foot Model</h3>
-                <p>Describe your dream foot model. We generate a personalized set just for you.</p>
-                <div class="price">$29 one-time</div>
-            </div>
-            <div class="product-card">
-                <div class="icon">🦶</div>
-                <h3>Foot Lingerie</h3>
-                <p>Digital designs + physical laser-cut foot jewelry. Leather, latex, acrylic — wearable art.</p>
-                <div class="price">From $12</div>
-            </div>
-            <div class="product-card">
-                <div class="icon">🪔</div>
-                <h3>Foot Mold Lamps</h3>
-                <p>Custom lamps sculpted from foot molds. Laser-cut layered acrylic. Studio 535 original.</p>
-                <div class="price">From $149</div>
-            </div>
-        </div>
-    </section>
-
-    <section class="newsletter" id="newsletter">
-        <h2>Daily Foot Gift</h2>
-        <p>One beautiful image. One thoughtful insight. Delivered to your inbox every morning.</p>
-        <form id="signup-form">
-            <input type="email" placeholder="Your email address" required>
-            <button type="submit">Subscribe</button>
-        </form>
-    </section>
-
-    <section class="social">
-        <h2>Follow the Journey</h2>
-        <div class="social-links">
-            <a href="https://tiktok.com/@footgift">TikTok</a>
-            <a href="https://instagram.com/footgift">Instagram</a>
-            <a href="https://x.com/footgift">X / Twitter</a>
-            <a href="https://pinterest.com/footgift">Pinterest</a>
-            <a href="https://reddit.com/r/footgift">Reddit</a>
-        </div>
-    </section>
-
-    <footer>
-        <p>footgift.com &copy; 2026 — Studio 535 — Las Vegas</p>
-    </footer>
-
-    <script>
-        // Gallery placeholder images
-        const galleryImages = [
-            { src: 'https://v3b.fal.media/files/b/0aa2069d/IjlfwrR4LY43Ss17PlSq2_RqB9vyPS.png', name: 'Luna — Silk & Elegance' },
-            { src: 'https://v3b.fal.media/files/b/0aa2069d/9AP5tevIwFzHm_wJknDCC_JrDkDEmu.png', name: 'Soleil — Beach & Gold' },
-            { src: 'https://v3b.fal.media/files/b/0aa2069e/vXGJDfBqOTiKaTWedBprH_oIjHIMtV.png', name: 'Noir — Marble & Drama' },
-            { src: 'https://v3b.fal.media/files/b/0aa206a3/Yp4YqtWORVjnGShh3JWwW_ZJYVmvFJ.png', name: 'Ivy — Poolside Luxe' },
-            { src: 'https://v3b.fal.media/files/b/0aa206a4/n14-udjqXR-aaZHBH807I_7UZ6MZud.png', name: 'Pearl — Water & Zen' },
-            { src: 'https://v3b.fal.media/files/b/0aa206a4/qCjF0ak0kAC5j6Jkj19DK_plbuhppV.png', name: 'Ruby — Rug & Opulence' },
-        ];
-
-        const grid = document.getElementById('gallery-grid');
-        galleryImages.forEach(img => {
-            const item = document.createElement('div');
-            item.className = 'grid-item';
-            item.innerHTML = `
-                <img src="${img.src}" alt="${img.name}" loading="lazy">
-                <div class="overlay"><span class="model-name">${img.name}</span></div>
-            `;
-            grid.appendChild(item);
-        });
-
-        document.getElementById('signup-form').addEventListener('submit', (e) => {
-            e.preventDefault();
-            const email = e.target.querySelector('input').value;
-            alert('Welcome to the journey, foot lover. Your first Daily Foot Gift arrives tomorrow. ✨');
-            e.target.reset();
-        });
-    </script>
+    <nav class="nav"><a class="brand" href="/">footgift</a><div class="nav-links"><a href="#products">Shop</a><a href="#blog">Blog</a><a href="#newsletter">Newsletter</a><a class="community-link" href="https://footgifts.com">Foot Gifts →</a></div></nav>
+    <section class="hero"><h1>footgift</h1><p class="tagline">For the feet that carry you</p><p class="subtitle">Premium foot care, beauty, and wellness — crafted for the feet that carry you through life. Skincare, jewelry, foot lingerie, and artisan accessories from Studio&nbsp;535.</p><a href="#products" class="cta primary">Explore the Collection</a></section>
+    <section id="products"><h2>The Collection</h2><div class="product-grid"><div class="product-card"><div class="icon">🧴</div><h3>Foot Care Essentials</h3><p>Moisturizers, scrubs, callus treatments, and serums. Everything your feet deserve.</p><div class="price">From $14</div></div><div class="product-card"><div class="icon">💎</div><h3>Foot Jewelry</h3><p>Anklets, toe rings, barefoot sandals, and fine chains. Handcrafted with care.</p><div class="price">From $24</div></div><div class="product-card"><div class="icon">🦶</div><h3>Foot Lingerie</h3><p>Tasteful, editorial designs. Laser-cut leather, lace, and acrylic — wearable art.</p><div class="price">From $12</div></div><div class="product-card"><div class="icon">🪔</div><h3>Studio 535 Originals</h3><p>Custom foot mold lamps, laser-cut sculptures, and one-of-a-kind pieces.</p><div class="price">From $149</div></div></div></section>
+    <section id="blog"><h2>From the Blog</h2><div class="blog-grid"><div class="blog-card"><div class="blog-img">🧴</div><div class="blog-body"><div class="date">Coming Soon</div><h3>The Ultimate Foot Care Routine</h3><p>From exfoliation to moisturizing — a complete guide to keeping your feet soft and healthy year-round.</p></div></div><div class="blog-card"><div class="blog-img">💍</div><div class="blog-body"><div class="date">Coming Soon</div><h3>How to Style Foot Jewelry</h3><p>Anklets, toe rings, and barefoot sandals — tips for layering and choosing metals.</p></div></div><div class="blog-card"><div class="blog-img">☀️</div><div class="blog-body"><div class="date">Coming Soon</div><h3>Summer Foot Care Guide</h3><p>Protect, moisturize, and show off your feet this season. Sandal-ready tips.</p></div></div></div></section>
+    <section class="newsletter" id="newsletter"><h2>Daily Foot Gift</h2><p>One thoughtful insight. One curated recommendation. Delivered to your inbox every morning — for the feet that carry you.</p><form onsubmit="event.preventDefault();this.innerHTML='<p style=color:#a9ddb4>✓ Welcome to the journey. Your first Daily Foot Gift arrives tomorrow.</p>'"><input type="email" placeholder="Your email address" required><button type="submit">Subscribe</button></form></section>
+    <section class="community-banner"><h2 style="font-size:1.5rem;font-weight:300;color:var(--gold2);letter-spacing:.1em;margin-bottom:.8rem">Looking for Foot Gifts?</h2><p>Our sister community celebrates foot artistry through exclusive galleries, AI models, and curated content for enthusiasts.</p><a href="https://footgifts.com" class="cta">Visit Foot Gifts →</a></section>
+    <section class="social"><h2>Follow the Journey</h2><div class="social-links"><a href="https://tiktok.com/@footgift">TikTok</a><a href="https://instagram.com/footgift">Instagram</a><a href="https://x.com/footgift">X / Twitter</a><a href="https://pinterest.com/footgift">Pinterest</a><a href="https://reddit.com/r/footgift">Reddit</a></div></section>
+    <footer><p>footgift.com © 2026 — Studio 535 — Las Vegas, NV</p></footer>
 </body>
 </html>
